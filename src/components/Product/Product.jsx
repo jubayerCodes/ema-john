@@ -4,6 +4,7 @@ import productPlaceHolder from '../../assets/images/product-placeholder.png'
 
 const Product = (props) => {
 
+    const { handleAddToCart, product } = props
     const { img, name, price, seller, ratings } = props.product
     return (
         <div className='product'>
@@ -29,7 +30,7 @@ const Product = (props) => {
                 </div>
             </div>
             <div className="product-bottom">
-                <button className='product-btn btn'>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
+                <button className='product-btn btn' onClick={() => handleAddToCart(product)}>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
             </div>
         </div>
     );
