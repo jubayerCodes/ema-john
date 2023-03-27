@@ -40,3 +40,7 @@ h6 {
 
     color: #2A414F;
 }
+
+.btn {
+    cursor: pointer;
+}

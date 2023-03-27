@@ -1,14 +1,14 @@
 import React from 'react';
 import './Product.css'
+import productPlaceHolder from '../../assets/images/product-placeholder.png'
 
 const Product = (props) => {
 
     const { img, name, price, seller, ratings } = props.product
-    console.log(props.product);
     return (
         <div className='product'>
             <div className="product-top">
-                <img src={img} alt="" className="product-img" />
+                <img src={img || productPlaceHolder} alt="" className="product-img" />
             </div>
             <div className="product-middle">
                 <div className="product-info-top">
@@ -29,7 +29,7 @@ const Product = (props) => {
                 </div>
             </div>
             <div className="product-bottom">
-                <button className='product-btn'>Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
+                <button className='product-btn btn'>Add to cart <i className="fa-solid fa-cart-shopping"></i></button>
             </div>
         </div>
     );
