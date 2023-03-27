@@ -1,5 +1,5 @@
-.header{
-    width: 100%;
+.header {
+    margin: auto;
     height: 80px;
     background-color: #1C2B35;
     display: flex;
@@ -7,28 +7,28 @@
     align-items: center;
 }
 
-.header .header-container{
+.header .header-container {
+    width: 1480px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1480px;
 }
 
-.header .header-container .header-logo img{
+.header .header-container .header-logo img {
     width: 140px;
 }
 
-.header .header-container .header-menu .header-ul{
+.header .header-container .header-menu .header-ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
 }
 
-.header .header-container .header-menu .header-ul .header-li a{
+.header .header-container .header-menu .header-ul .header-li a {
     transition: all 0.3s ease;
 }
 
-.header .header-container .header-menu .header-ul .header-li a:hover{
+.header .header-container .header-menu .header-ul .header-li a:hover {
     color: orange;
 }
