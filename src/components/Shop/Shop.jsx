@@ -17,7 +17,6 @@ const Shop = () => {
     const handleAddToCart = (product) => {
         const newCart = [...cart, product]
         setCart(newCart)
-        console.log(cart);
     }
     return (
         <section className='shop'>
@@ -26,7 +25,7 @@ const Shop = () => {
                     {products.map(product => <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />)}
                 </div>
                 <div className="cart">
-                    <Cart />
+                    <Cart cart={cart} />
                 </div>
             </div>
         </section>

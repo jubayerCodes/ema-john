@@ -1,7 +1,13 @@
 import React from 'react';
 import './Cart.css'
 
-const Cart = () => {
+const Cart = (props) => {
+    const { cart } = props
+    console.log(cart);
+
+    const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + currentValue.price, 0)
+    console.log(totalPrice);
+
     return (
         <div className='cart-container'>
             <div className="cart-top">
@@ -11,10 +17,10 @@ const Cart = () => {
             </div>
             <div className="cart-middle">
                 <h5 className="selected-items">
-                    Selected Items: 5
+                    Selected Items: {cart.length}
                 </h5>
                 <h5 className="total-price">
-                    Total Price: $5000
+                    Total Price: ${totalPrice}
                 </h5>
                 <h5 className="total-shipping-charge">
                     Total Shipping Charge: $450
