@@ -6,7 +6,10 @@ const Cart = (props) => {
     console.log(cart);
 
     const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + currentValue.price, 0)
-    console.log(totalPrice);
+    const totalShipping = cart.reduce((previousValue, currentValue) => previousValue + currentValue.shipping, 0)
+    const tax = (totalPrice / 100) * 5
+    const grandTotal = totalPrice + totalShipping + tax
+    console.log(grandTotal);
 
     return (
         <div className='cart-container'>
@@ -23,13 +26,13 @@ const Cart = (props) => {
                     Total Price: ${totalPrice}
                 </h5>
                 <h5 className="total-shipping-charge">
-                    Total Shipping Charge: $450
+                    Total Shipping Charge: ${totalShipping}
                 </h5>
                 <h5 className="tax">
-                    Tax: $51
+                    Tax: ${tax.toFixed(2)}
                 </h5>
                 <h3 className="grand-total">
-                    Grand Total: $45555
+                    Grand Total: ${grandTotal.toFixed(2)}
                 </h3>
             </div>
             <div className="cart-bottom">
