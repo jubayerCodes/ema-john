@@ -2,14 +2,12 @@ import React from 'react';
 import './Cart.css'
 
 const Cart = (props) => {
-    const { cart } = props
-    console.log(cart);
+    const { cart, storedCart } = props
 
     const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + currentValue.price, 0)
     const totalShipping = cart.reduce((previousValue, currentValue) => previousValue + currentValue.shipping, 0)
     const tax = (totalPrice / 100) * 5
     const grandTotal = totalPrice + totalShipping + tax
-    console.log(grandTotal);
 
     return (
         <div className='cart-container'>
