@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -55,6 +55,14 @@ const Shop = () => {
         addToDb(product['id'])
     }
 
+    const handleRemoveFromCart = (product) => {
+        let newCart = []
+        const remainingProducts = cart.filter(pd => pd.id !== product.id)
+        newCart = [...remainingProducts]
+        setCart(newCart)
+        removeFromDb(product.id)
+    }
+
     const handleClearCart = () => {
         deleteShoppingCart()
         setCart([])
@@ -63,7 +71,7 @@ const Shop = () => {
         <section className='shop'>
             <div className="shop-container">
                 <div className="products-container">
-                    {products.map(product => <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />)}
+                    {products.map(product => <Product key={product.id} product={product} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} />)}
                 </div>
                 <div className="cart">
                     <Cart cart={cart} handleClearCart={handleClearCart} />
