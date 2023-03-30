@@ -4,8 +4,9 @@ import './Cart.css'
 const Cart = (props) => {
     const { cart, storedCart } = props
 
-    const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + currentValue.price, 0)
-    const totalShipping = cart.reduce((previousValue, currentValue) => previousValue + currentValue.shipping, 0)
+    const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + (currentValue.price * currentValue.quantity), 0)
+    const totalShipping = cart.reduce((previousValue, currentValue) => previousValue + (currentValue.shipping * currentValue.quantity), 0)
+    const quantity = cart.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0)
     const tax = (totalPrice / 100) * 5
     const grandTotal = totalPrice + totalShipping + tax
 
@@ -18,7 +19,7 @@ const Cart = (props) => {
             </div>
             <div className="cart-middle">
                 <h5 className="selected-items">
-                    Selected Items: {cart.length}
+                    Selected Items: {quantity}
                 </h5>
                 <h5 className="total-price">
                     Total Price: ${totalPrice}
