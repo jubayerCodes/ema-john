@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css'
 
 const Cart = (props) => {
-    const { cart, storedCart } = props
+    const { cart, handleClearCart } = props
 
     const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + (currentValue.price * currentValue.quantity), 0)
     const totalShipping = cart.reduce((previousValue, currentValue) => previousValue + (currentValue.shipping * currentValue.quantity), 0)
@@ -35,7 +35,7 @@ const Cart = (props) => {
                 </h3>
             </div>
             <div className="cart-bottom">
-                <button className='clear-cart-btn btn'>Clear Cart</button>
+                <button className='clear-cart-btn btn' onClick={handleClearCart}>Clear Cart</button>
                 <button className='review-order-btn btn'>Review Order</button>
             </div>
         </div>
