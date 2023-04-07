@@ -13,11 +13,6 @@ const addToDb = (id, inputedQuantity) => {
         shoppingCart[id] = newQuantity;
     }
 
-    if(shoppingCart[id] === 0){
-        delete shoppingCart[id]
-    }
-
-    console.log(shoppingCart);
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 }
 
