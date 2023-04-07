@@ -36,10 +36,6 @@ const Product = (props) => {
                     Add to cart
                     <FontAwesomeIcon icon={faCartShopping} />
                 </button>
-                <button className='product-btn btn' onClick={() => handleRemoveFromCart(product)}>
-                    Remove From cart
-                    <FontAwesomeIcon icon={faCartShopping} />
-                </button>
             </div>
         </div>
     );

@@ -1,8 +1,9 @@
 import React from 'react';
 import './Cart.css'
+import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
-    const { cart, handleClearCart } = props
+    const { cart, handleClearCart, review } = props
 
     const totalPrice = cart.reduce((previousValue, currentValue) => previousValue + (currentValue.price * currentValue.quantity), 0)
     const totalShipping = cart.reduce((previousValue, currentValue) => previousValue + (currentValue.shipping * currentValue.quantity), 0)
@@ -35,8 +36,20 @@ const Cart = (props) => {
                 </h3>
             </div>
             <div className="cart-bottom">
-                <button className='clear-cart-btn btn' onClick={handleClearCart}>Clear Cart</button>
-                <button className='review-order-btn btn'>Review Order</button>
+                {
+                    review ?
+                        <>
+                            <button className='clear-cart-btn btn' onClick={handleClearCart}>Clear Cart</button>
+                            <Link to="/review"><button className='review-order-btn btn'>Review Order</button></Link>
+                        </>
+
+                        :
+
+                        <>
+                            <button className='clear-cart-btn btn' onClick={handleClearCart}>Clear Cart</button>
+                            <button className='review-order-btn btn'>proceed checkout</button>
+                        </>
+                }
             </div>
         </div>
     );
