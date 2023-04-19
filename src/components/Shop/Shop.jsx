@@ -3,11 +3,11 @@ import { addToDb, deleteShoppingCart, removeFromDb } from '../../utilities/faked
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
 
-    const {storedCart, products} = useLoaderData()
+    const { storedCart, products } = useLoaderData()
     const [cart, setCart] = useState(storedCart)
 
     const handleAddToCart = (product) => {
@@ -38,7 +38,9 @@ const Shop = () => {
                     {products.map(product => <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />)}
                 </div>
                 <div className="cart">
-                    <Cart cart={cart} handleClearCart={handleClearCart} review={true} />
+                    <Cart cart={cart} handleClearCart={handleClearCart} >
+                        <Link to="/review"><button className='review-order-btn btn'>Review Order</button></Link>
+                    </Cart>
                 </div>
             </div>
         </section>
