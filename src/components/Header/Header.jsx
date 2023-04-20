@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css'
 import logo from '../../assets/images/Logo.svg'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+    }
+
+
     return (
         <header className='header'>
             <div className="header-container">
@@ -34,13 +42,24 @@ const Header = () => {
                                 Manage Inventory
                             </Link>
                         </li>
-                        <li className="header-li">
-                            <Link to="/login">
-                                Login
-                            </Link>
-                        </li>
                     </ul>
                 </div>
+                {
+                    user ?
+                        <>
+                            <div className="header-profile">
+
+                                <h4>{user?.displayName}</h4>
+                                <button onClick={handleLogOut}>Log Out</button>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <Link to="/login" className='login-link'>
+                                Login
+                            </Link>
+                        </>
+                }
             </div>
         </header>
     );
